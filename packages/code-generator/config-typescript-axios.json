@@ -1,0 +1,9 @@
+{
+    "npmName": "formant-query",
+    "apiPackage": "formant-query-api",
+    "modelPackage": "formant-query-models",
+    "useSingleRequestParameter": true,
+    "withSeparateModelsAndApi": true,
+    "npmVersion": "1.124.5",
+    "npmRepository": "https://github.com/burro-robotics/formant-query-openapi-client"
+  }

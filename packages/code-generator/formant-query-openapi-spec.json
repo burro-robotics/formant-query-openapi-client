@@ -1,0 +1,3973 @@
+{
+  "components": {
+    "schemas": {
+      "ActiveDevicesQuery": {
+        "properties": {
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "default",
+              "capture"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ],
+        "type": "object"
+      },
+      "AggregateRow": {
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "streamName": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "avg",
+              "sum",
+              "count",
+              "min",
+              "max"
+            ],
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "value": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "unit",
+          "label",
+          "name",
+          "streamName",
+          "value",
+          "type"
+        ],
+        "type": "object"
+      },
+      "CountHistory": {
+        "properties": {
+          "counts": {
+            "items": {
+              "properties": {
+                "counts": {
+                  "items": {
+                    "properties": {
+                      "0": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "1": {
+                        "format": "int64",
+                        "maximum": 9007199254740991,
+                        "minimum": -9007199254740991,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "0",
+                      "1"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "id": {
+                  "format": "uuid",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "counts"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "total": {
+            "format": "int64",
+            "maximum": 9007199254740991,
+            "minimum": -9007199254740991,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "counts"
+        ],
+        "type": "object"
+      },
+      "CountHistoryEntry": {
+        "properties": {
+          "counts": {
+            "items": {
+              "properties": {
+                "0": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "1": {
+                  "format": "int64",
+                  "maximum": 9007199254740991,
+                  "minimum": -9007199254740991,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "0",
+                "1"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "counts"
+        ],
+        "type": "object"
+      },
+      "CountHistoryEntryCount": {
+        "properties": {
+          "0": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "1": {
+            "format": "int64",
+            "maximum": 9007199254740991,
+            "minimum": -9007199254740991,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "0",
+          "1"
+        ],
+        "type": "object"
+      },
+      "CountHistoryQuery": {
+        "properties": {
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "data-point",
+              "byte",
+              "asset-byte",
+              "asset",
+              "cost"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "start",
+          "end"
+        ],
+        "type": "object"
+      },
+      "DataPoint": {
+        "properties": {
+          "0": {},
+          "1": {}
+        },
+        "required": [
+          "0",
+          "1"
+        ],
+        "type": "object"
+      },
+      "IntervalQuery": {
+        "properties": {
+          "agentIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "aggregate": {
+            "enum": [
+              "year",
+              "month",
+              "week",
+              "day",
+              "12 hours",
+              "4 hours",
+              "hour",
+              "30 minutes",
+              "5 minutes",
+              "minute",
+              "30 seconds",
+              "5 seconds",
+              "second"
+            ],
+            "type": "string"
+          },
+          "deviceIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "interval": {
+            "enum": [
+              "minute",
+              "hour",
+              "day",
+              "month",
+              "year"
+            ],
+            "type": "string"
+          },
+          "latestOnly": {
+            "type": "boolean"
+          },
+          "names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "next": {},
+          "notNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "tags": {},
+          "types": {
+            "items": {
+              "enum": [
+                "bitset",
+                "localization",
+                "point cloud",
+                "location",
+                "file",
+                "health",
+                "transform tree",
+                "battery",
+                "video",
+                "numeric set",
+                "json",
+                "image",
+                "numeric",
+                "text"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "interval",
+          "start",
+          "end"
+        ],
+        "type": "object"
+      },
+      "IsoDateListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "format": "date-time",
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "Metadata": {
+        "properties": {
+          "deviceId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tags": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "type": {
+            "enum": [
+              "bitset",
+              "localization",
+              "point cloud",
+              "location",
+              "file",
+              "health",
+              "transform tree",
+              "battery",
+              "video",
+              "numeric set",
+              "json",
+              "image",
+              "numeric",
+              "text"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "deviceId",
+          "name",
+          "type",
+          "tags"
+        ],
+        "type": "object"
+      },
+      "MetadataListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "properties": {
+                "deviceId": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "tags": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "type": {
+                  "enum": [
+                    "bitset",
+                    "localization",
+                    "point cloud",
+                    "location",
+                    "file",
+                    "health",
+                    "transform tree",
+                    "battery",
+                    "video",
+                    "numeric set",
+                    "json",
+                    "image",
+                    "numeric",
+                    "text"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "deviceId",
+                "name",
+                "type",
+                "tags"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "Query": {
+        "properties": {
+          "agentIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "aggregate": {
+            "enum": [
+              "year",
+              "month",
+              "week",
+              "day",
+              "12 hours",
+              "4 hours",
+              "hour",
+              "30 minutes",
+              "5 minutes",
+              "minute",
+              "30 seconds",
+              "5 seconds",
+              "second"
+            ],
+            "type": "string"
+          },
+          "deviceIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "latestOnly": {
+            "type": "boolean"
+          },
+          "names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "next": {},
+          "notNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "tags": {},
+          "types": {
+            "items": {
+              "enum": [
+                "bitset",
+                "localization",
+                "point cloud",
+                "location",
+                "file",
+                "health",
+                "transform tree",
+                "battery",
+                "video",
+                "numeric set",
+                "json",
+                "image",
+                "numeric",
+                "text"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ],
+        "type": "object"
+      },
+      "RowListResponse": {
+        "properties": {
+          "items": {
+            "items": {},
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "ScopeFilter": {
+        "properties": {
+          "agentIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "deviceIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "notNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "tags": {},
+          "types": {
+            "items": {
+              "enum": [
+                "bitset",
+                "localization",
+                "point cloud",
+                "location",
+                "file",
+                "health",
+                "transform tree",
+                "battery",
+                "video",
+                "numeric set",
+                "json",
+                "image",
+                "numeric",
+                "text"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "SeekQuery": {
+        "properties": {
+          "agentIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "deviceIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "direction": {
+            "enum": [
+              "next",
+              "previous"
+            ],
+            "type": "string"
+          },
+          "from": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "notNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "tags": {},
+          "types": {
+            "items": {
+              "enum": [
+                "bitset",
+                "localization",
+                "point cloud",
+                "location",
+                "file",
+                "health",
+                "transform tree",
+                "battery",
+                "video",
+                "numeric set",
+                "json",
+                "image",
+                "numeric",
+                "text"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "direction",
+          "from"
+        ],
+        "type": "object"
+      },
+      "SeekResult": {
+        "properties": {
+          "time": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "SqlQuery": {
+        "properties": {
+          "agentIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "aggregateLevel": {
+            "enum": [
+              "hour",
+              "date",
+              "day",
+              "week",
+              "month",
+              "year"
+            ],
+            "type": "string"
+          },
+          "deviceIds": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "notNames": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "orderByColumn": {
+            "type": "string"
+          },
+          "orderByDescending": {
+            "type": "boolean"
+          },
+          "parameters": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "sqlQuery": {
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "streamColumns": {
+            "items": {
+              "properties": {
+                "aggregateType": {
+                  "enum": [
+                    "avg",
+                    "sum",
+                    "count",
+                    "min",
+                    "max"
+                  ],
+                  "type": "string"
+                },
+                "streamName": {
+                  "type": "string"
+                },
+                "streamType": {
+                  "enum": [
+                    "bitset",
+                    "localization",
+                    "point cloud",
+                    "location",
+                    "file",
+                    "health",
+                    "transform tree",
+                    "battery",
+                    "video",
+                    "numeric set",
+                    "json",
+                    "image",
+                    "numeric",
+                    "text"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "streamName",
+                "streamType"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "tags": {},
+          "taskColumns": {
+            "items": {
+              "properties": {
+                "columns": {
+                  "items": {},
+                  "type": "array"
+                },
+                "deviceIds": {
+                  "items": {},
+                  "type": "array"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "tableName": {
+                  "type": "string"
+                },
+                "yAxis": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tableName",
+                "name",
+                "columns"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "type": {
+            "type": "string"
+          },
+          "types": {
+            "items": {
+              "enum": [
+                "bitset",
+                "localization",
+                "point cloud",
+                "location",
+                "file",
+                "health",
+                "transform tree",
+                "battery",
+                "video",
+                "numeric set",
+                "json",
+                "image",
+                "numeric",
+                "text"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "visibleColumns": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "StreamAggregateData": {
+        "properties": {
+          "aggregates": {},
+          "deviceId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tags": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "type": {
+            "enum": [
+              "bitset",
+              "localization",
+              "point cloud",
+              "location",
+              "file",
+              "health",
+              "transform tree",
+              "battery",
+              "video",
+              "numeric set",
+              "json",
+              "image",
+              "numeric",
+              "text"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "deviceId",
+          "tags",
+          "type",
+          "aggregates"
+        ],
+        "type": "object"
+      },
+      "StreamColumn": {
+        "properties": {
+          "aggregateType": {
+            "enum": [
+              "avg",
+              "sum",
+              "count",
+              "min",
+              "max"
+            ],
+            "type": "string"
+          },
+          "streamName": {
+            "type": "string"
+          },
+          "streamType": {
+            "enum": [
+              "bitset",
+              "localization",
+              "point cloud",
+              "location",
+              "file",
+              "health",
+              "transform tree",
+              "battery",
+              "video",
+              "numeric set",
+              "json",
+              "image",
+              "numeric",
+              "text"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "streamName",
+          "streamType"
+        ],
+        "type": "object"
+      },
+      "StreamColumnListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "StreamCurrentValueListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "properties": {
+                "deviceId": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "tags": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "type": {
+                  "enum": [
+                    "bitset",
+                    "localization",
+                    "point cloud",
+                    "location",
+                    "file",
+                    "health",
+                    "transform tree",
+                    "battery",
+                    "video",
+                    "numeric set",
+                    "json",
+                    "image",
+                    "numeric",
+                    "text"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "deviceId",
+                "name",
+                "type",
+                "tags"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "StreamData": {
+        "properties": {
+          "deviceId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "points": {
+            "items": {
+              "properties": {
+                "0": {},
+                "1": {}
+              },
+              "required": [
+                "0",
+                "1"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "tags": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object"
+          },
+          "type": {
+            "enum": [
+              "bitset",
+              "localization",
+              "point cloud",
+              "location",
+              "file",
+              "health",
+              "transform tree",
+              "battery",
+              "video",
+              "numeric set",
+              "json",
+              "image",
+              "numeric",
+              "text"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "deviceId",
+          "tags",
+          "type",
+          "points"
+        ],
+        "type": "object"
+      },
+      "StreamDataListResponse": {
+        "properties": {
+          "aggregates": {
+            "items": {
+              "properties": {
+                "aggregates": {},
+                "deviceId": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "tags": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "type": {
+                  "enum": [
+                    "bitset",
+                    "localization",
+                    "point cloud",
+                    "location",
+                    "file",
+                    "health",
+                    "transform tree",
+                    "battery",
+                    "video",
+                    "numeric set",
+                    "json",
+                    "image",
+                    "numeric",
+                    "text"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "deviceId",
+                "tags",
+                "type",
+                "aggregates"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "items": {
+            "items": {
+              "properties": {
+                "deviceId": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "points": {
+                  "items": {
+                    "properties": {
+                      "0": {},
+                      "1": {}
+                    },
+                    "required": [
+                      "0",
+                      "1"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "tags": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "type": {
+                  "enum": [
+                    "bitset",
+                    "localization",
+                    "point cloud",
+                    "location",
+                    "file",
+                    "health",
+                    "transform tree",
+                    "battery",
+                    "video",
+                    "numeric set",
+                    "json",
+                    "image",
+                    "numeric",
+                    "text"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "deviceId",
+                "tags",
+                "type",
+                "points"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "next": {}
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "StreamRowsResponse": {
+        "properties": {
+          "aggregateSqlText": {
+            "type": "string"
+          },
+          "aggregates": {
+            "items": {
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "streamName": {
+                  "type": "string"
+                },
+                "type": {
+                  "enum": [
+                    "avg",
+                    "sum",
+                    "count",
+                    "min",
+                    "max"
+                  ],
+                  "type": "string"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "unit",
+                "label",
+                "name",
+                "streamName",
+                "value",
+                "type"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "columns": {
+            "items": {},
+            "type": "array"
+          },
+          "items": {
+            "items": {},
+            "type": "array"
+          },
+          "rowCount": {
+            "type": "number"
+          },
+          "rows": {
+            "items": {},
+            "type": "array"
+          },
+          "sqlText": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "items",
+          "sqlText",
+          "rows",
+          "columns",
+          "rowCount"
+        ],
+        "type": "object"
+      },
+      "StringListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "TaskReportColumn": {
+        "properties": {
+          "columns": {
+            "items": {},
+            "type": "array"
+          },
+          "deviceIds": {
+            "items": {},
+            "type": "array"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tableName": {
+            "type": "string"
+          },
+          "yAxis": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "tableName",
+          "name",
+          "columns"
+        ],
+        "type": "object"
+      },
+      "TaskReportColumnListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "TelemetryExportSheetRequest": {
+        "properties": {
+          "query": {
+            "properties": {
+              "agentIds": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "aggregate": {
+                "enum": [
+                  "year",
+                  "month",
+                  "week",
+                  "day",
+                  "12 hours",
+                  "4 hours",
+                  "hour",
+                  "30 minutes",
+                  "5 minutes",
+                  "minute",
+                  "30 seconds",
+                  "5 seconds",
+                  "second"
+                ],
+                "type": "string"
+              },
+              "deviceIds": {
+                "items": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "end": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "latestOnly": {
+                "type": "boolean"
+              },
+              "names": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "next": {},
+              "notNames": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "start": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "tags": {},
+              "types": {
+                "items": {
+                  "enum": [
+                    "bitset",
+                    "localization",
+                    "point cloud",
+                    "location",
+                    "file",
+                    "health",
+                    "transform tree",
+                    "battery",
+                    "video",
+                    "numeric set",
+                    "json",
+                    "image",
+                    "numeric",
+                    "text"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "start",
+              "end"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "query"
+        ],
+        "type": "object"
+      },
+      "TelemetryExportSheetResult": {
+        "properties": {
+          "spreadsheetUrl": {
+            "format": "url",
+            "type": "string"
+          },
+          "telemetryNotFound": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "spreadsheetUrl",
+          "telemetryNotFound"
+        ],
+        "type": "object"
+      },
+      "UsageMetric": {
+        "properties": {
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "deviceId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "metricType": {
+            "enum": [
+              "data-in-bytes",
+              "data-in-count",
+              "data-out-bytes",
+              "data-out-cached-bytes",
+              "data-out-count",
+              "analytics-out-bytes",
+              "analytics-out-count",
+              "data-stored-bytes",
+              "asset-in-bytes"
+            ],
+            "type": "string"
+          },
+          "metricValue": {
+            "format": "int64",
+            "maximum": 9007199254740991,
+            "minimum": 1,
+            "type": "integer"
+          },
+          "organizationId": {
+            "format": "uuid",
+            "type": "string"
+          },
+          "sourceId": {
+            "type": "string"
+          },
+          "time": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "userId": {
+            "format": "uuid",
+            "type": "string"
+          }
+        },
+        "required": [
+          "organizationId",
+          "metricType",
+          "time",
+          "metricValue",
+          "sourceId"
+        ],
+        "type": "object"
+      },
+      "UsageMetricsQuery": {
+        "properties": {
+          "detailed": {
+            "type": "boolean"
+          },
+          "end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "metricType": {
+            "enum": [
+              "data-in-bytes",
+              "data-in-count",
+              "data-out-bytes",
+              "data-out-cached-bytes",
+              "data-out-count",
+              "analytics-out-bytes",
+              "analytics-out-count",
+              "data-stored-bytes",
+              "asset-in-bytes"
+            ],
+            "type": "string"
+          },
+          "start": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ],
+        "type": "object"
+      },
+      "UsageMetricsQueryResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "properties": {
+                "createdAt": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "deviceId": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "id": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "metricType": {
+                  "enum": [
+                    "data-in-bytes",
+                    "data-in-count",
+                    "data-out-bytes",
+                    "data-out-cached-bytes",
+                    "data-out-count",
+                    "analytics-out-bytes",
+                    "analytics-out-count",
+                    "data-stored-bytes",
+                    "asset-in-bytes"
+                  ],
+                  "type": "string"
+                },
+                "metricValue": {
+                  "format": "int64",
+                  "maximum": 9007199254740991,
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "organizationId": {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                "sourceId": {
+                  "type": "string"
+                },
+                "time": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "format": "date-time",
+                  "type": "string"
+                },
+                "userId": {
+                  "format": "uuid",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "organizationId",
+                "metricType",
+                "time",
+                "metricValue",
+                "sourceId"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      },
+      "UuidListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "format": "uuid",
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "bearerFormat": "JWT",
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "title": "Formant query-api",
+    "version": "1.124.5"
+  },
+  "openapi": "3.0.0",
+  "paths": {
+    "/analytics/": {
+      "post": {
+        "description": "Retrieves all stream rows\nResource: organization\nAuthorized roles: viewer",
+        "operationId": "AnalyticsController.listStreamRows",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "aggregateLevel": {
+                    "enum": [
+                      "hour",
+                      "date",
+                      "day",
+                      "week",
+                      "month",
+                      "year"
+                    ],
+                    "type": "string"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "number"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "orderByColumn": {
+                    "type": "string"
+                  },
+                  "orderByDescending": {
+                    "type": "boolean"
+                  },
+                  "parameters": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "sqlQuery": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "streamColumns": {
+                    "items": {
+                      "properties": {
+                        "aggregateType": {
+                          "enum": [
+                            "avg",
+                            "sum",
+                            "count",
+                            "min",
+                            "max"
+                          ],
+                          "type": "string"
+                        },
+                        "streamName": {
+                          "type": "string"
+                        },
+                        "streamType": {
+                          "enum": [
+                            "bitset",
+                            "localization",
+                            "point cloud",
+                            "location",
+                            "file",
+                            "health",
+                            "transform tree",
+                            "battery",
+                            "video",
+                            "numeric set",
+                            "json",
+                            "image",
+                            "numeric",
+                            "text"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "streamName",
+                        "streamType"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "tags": {},
+                  "taskColumns": {
+                    "items": {
+                      "properties": {
+                        "columns": {
+                          "items": {},
+                          "type": "array"
+                        },
+                        "deviceIds": {
+                          "items": {},
+                          "type": "array"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "tableName": {
+                          "type": "string"
+                        },
+                        "yAxis": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "tableName",
+                        "name",
+                        "columns"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "unit": {
+                    "type": "string"
+                  },
+                  "visibleColumns": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "SqlQuery",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "aggregateSqlText": {
+                      "type": "string"
+                    },
+                    "aggregates": {
+                      "items": {
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "streamName": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "enum": [
+                              "avg",
+                              "sum",
+                              "count",
+                              "min",
+                              "max"
+                            ],
+                            "type": "string"
+                          },
+                          "unit": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "unit",
+                          "label",
+                          "name",
+                          "streamName",
+                          "value",
+                          "type"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "columns": {
+                      "items": {},
+                      "type": "array"
+                    },
+                    "items": {
+                      "items": {},
+                      "type": "array"
+                    },
+                    "rowCount": {
+                      "type": "number"
+                    },
+                    "rows": {
+                      "items": {},
+                      "type": "array"
+                    },
+                    "sqlText": {
+                      "type": "string"
+                    },
+                    "unit": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "sqlText",
+                    "rows",
+                    "columns",
+                    "rowCount"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List stream rows",
+        "tags": [
+          "Analytics"
+        ]
+      }
+    },
+    "/analytics/rows": {
+      "post": {
+        "description": "Will execute and return custom Sql Queries\nResource: organization\nAuthorized roles: viewer",
+        "operationId": "AnalyticsController.listRows",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "aggregateLevel": {
+                    "enum": [
+                      "hour",
+                      "date",
+                      "day",
+                      "week",
+                      "month",
+                      "year"
+                    ],
+                    "type": "string"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "number"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "orderByColumn": {
+                    "type": "string"
+                  },
+                  "orderByDescending": {
+                    "type": "boolean"
+                  },
+                  "parameters": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "sqlQuery": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "streamColumns": {
+                    "items": {
+                      "properties": {
+                        "aggregateType": {
+                          "enum": [
+                            "avg",
+                            "sum",
+                            "count",
+                            "min",
+                            "max"
+                          ],
+                          "type": "string"
+                        },
+                        "streamName": {
+                          "type": "string"
+                        },
+                        "streamType": {
+                          "enum": [
+                            "bitset",
+                            "localization",
+                            "point cloud",
+                            "location",
+                            "file",
+                            "health",
+                            "transform tree",
+                            "battery",
+                            "video",
+                            "numeric set",
+                            "json",
+                            "image",
+                            "numeric",
+                            "text"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "streamName",
+                        "streamType"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "tags": {},
+                  "taskColumns": {
+                    "items": {
+                      "properties": {
+                        "columns": {
+                          "items": {},
+                          "type": "array"
+                        },
+                        "deviceIds": {
+                          "items": {},
+                          "type": "array"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "tableName": {
+                          "type": "string"
+                        },
+                        "yAxis": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "tableName",
+                        "name",
+                        "columns"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "unit": {
+                    "type": "string"
+                  },
+                  "visibleColumns": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "SqlQuery",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {},
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List rows",
+        "tags": [
+          "Analytics"
+        ]
+      }
+    },
+    "/analytics/streams": {
+      "get": {
+        "description": "Retrieves all distinct streams for an organization\nResource: analytics\nAuthorized roles: viewer",
+        "operationId": "AnalyticsController.listStreams",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List streams",
+        "tags": [
+          "Analytics"
+        ]
+      }
+    },
+    "/analytics/task-report-rows": {
+      "post": {
+        "description": "Retrieves all task reports\nResource: organization\nAuthorized roles: viewer",
+        "operationId": "AnalyticsController.getTaskReports",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "aggregateLevel": {
+                    "enum": [
+                      "hour",
+                      "date",
+                      "day",
+                      "week",
+                      "month",
+                      "year"
+                    ],
+                    "type": "string"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "limit": {
+                    "type": "number"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "orderByColumn": {
+                    "type": "string"
+                  },
+                  "orderByDescending": {
+                    "type": "boolean"
+                  },
+                  "parameters": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "sqlQuery": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "streamColumns": {
+                    "items": {
+                      "properties": {
+                        "aggregateType": {
+                          "enum": [
+                            "avg",
+                            "sum",
+                            "count",
+                            "min",
+                            "max"
+                          ],
+                          "type": "string"
+                        },
+                        "streamName": {
+                          "type": "string"
+                        },
+                        "streamType": {
+                          "enum": [
+                            "bitset",
+                            "localization",
+                            "point cloud",
+                            "location",
+                            "file",
+                            "health",
+                            "transform tree",
+                            "battery",
+                            "video",
+                            "numeric set",
+                            "json",
+                            "image",
+                            "numeric",
+                            "text"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "streamName",
+                        "streamType"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "tags": {},
+                  "taskColumns": {
+                    "items": {
+                      "properties": {
+                        "columns": {
+                          "items": {},
+                          "type": "array"
+                        },
+                        "deviceIds": {
+                          "items": {},
+                          "type": "array"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "tableName": {
+                          "type": "string"
+                        },
+                        "yAxis": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "tableName",
+                        "name",
+                        "columns"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "unit": {
+                    "type": "string"
+                  },
+                  "visibleColumns": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "SqlQuery",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {},
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get task reports",
+        "tags": [
+          "Analytics"
+        ]
+      }
+    },
+    "/analytics/task-reports": {
+      "get": {
+        "description": "lists all task reports\nResource: analytics\nAuthorized roles: viewer",
+        "operationId": "AnalyticsController.listTaskReports",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List task reports",
+        "tags": [
+          "Analytics"
+        ]
+      }
+    },
+    "/counts/active-devices": {
+      "post": {
+        "operationId": "CountController.activeDevices",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "format": "uuid",
+                    "type": "string"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": [
+                      "default",
+                      "capture"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "start",
+                  "end"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "ActiveDevicesQuery",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "format": "uuid",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "Active devices",
+        "tags": [
+          "Count"
+        ]
+      }
+    },
+    "/counts/history": {
+      "post": {
+        "operationId": "CountController.history",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "format": "uuid",
+                    "type": "string"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "type": {
+                    "enum": [
+                      "data-point",
+                      "byte",
+                      "asset-byte",
+                      "asset",
+                      "cost"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "start",
+                  "end"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "CountHistoryQuery",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "counts": {
+                      "items": {
+                        "properties": {
+                          "counts": {
+                            "items": {
+                              "properties": {
+                                "0": {
+                                  "format": "date-time",
+                                  "type": "string"
+                                },
+                                "1": {
+                                  "format": "int64",
+                                  "maximum": 9007199254740991,
+                                  "minimum": -9007199254740991,
+                                  "type": "integer"
+                                }
+                              },
+                              "required": [
+                                "0",
+                                "1"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "id": {
+                            "format": "uuid",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "counts"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "total": {
+                      "format": "int64",
+                      "maximum": 9007199254740991,
+                      "minimum": -9007199254740991,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "total",
+                    "counts"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "summary": "History",
+        "tags": [
+          "Count"
+        ]
+      }
+    },
+    "/metadata": {
+      "post": {
+        "description": "Resource: streams\nAuthorized roles: viewer",
+        "operationId": "MetadataController.listMetadata",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "tags": {},
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "ScopeFilter",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "properties": {
+                          "deviceId": {
+                            "format": "uuid",
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          "type": {
+                            "enum": [
+                              "bitset",
+                              "localization",
+                              "point cloud",
+                              "location",
+                              "file",
+                              "health",
+                              "transform tree",
+                              "battery",
+                              "video",
+                              "numeric set",
+                              "json",
+                              "image",
+                              "numeric",
+                              "text"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "deviceId",
+                          "name",
+                          "type",
+                          "tags"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List metadata",
+        "tags": [
+          "Metadata"
+        ]
+      }
+    },
+    "/metadata/device-ids": {
+      "post": {
+        "description": "Resource: devices\nAuthorized roles: viewer",
+        "operationId": "MetadataController.listDeviceIds",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "tags": {},
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "ScopeFilter",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "format": "uuid",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List device ids",
+        "tags": [
+          "Metadata"
+        ]
+      }
+    },
+    "/metadata/stream-names": {
+      "post": {
+        "description": "Resource: streams\nAuthorized roles: viewer",
+        "operationId": "MetadataController.listStreamNames",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "tags": {},
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "ScopeFilter",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List stream names",
+        "tags": [
+          "Metadata"
+        ]
+      }
+    },
+    "/online-devices": {
+      "get": {
+        "description": "Resource: devices\nAuthorized roles: viewer",
+        "operationId": "OnlineDevicesController.online",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "sensitive",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "format": "uuid",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Online",
+        "tags": [
+          "Online Devices"
+        ]
+      }
+    },
+    "/presence": {
+      "post": {
+        "description": "Resource: streams\nAuthorized roles: viewer",
+        "operationId": "PresenceController.count",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "aggregate": {
+                    "enum": [
+                      "year",
+                      "month",
+                      "week",
+                      "day",
+                      "12 hours",
+                      "4 hours",
+                      "hour",
+                      "30 minutes",
+                      "5 minutes",
+                      "minute",
+                      "30 seconds",
+                      "5 seconds",
+                      "second"
+                    ],
+                    "type": "string"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "interval": {
+                    "enum": [
+                      "minute",
+                      "hour",
+                      "day",
+                      "month",
+                      "year"
+                    ],
+                    "type": "string"
+                  },
+                  "latestOnly": {
+                    "type": "boolean"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "next": {},
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "tags": {},
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "interval",
+                  "start",
+                  "end"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "IntervalQuery",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Count",
+        "tags": [
+          "Presence"
+        ]
+      }
+    },
+    "/queries": {
+      "post": {
+        "description": "Resource: streams\nAuthorized roles: viewer",
+        "operationId": "QueryController.query",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "app-id",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "aggregate": {
+                    "enum": [
+                      "year",
+                      "month",
+                      "week",
+                      "day",
+                      "12 hours",
+                      "4 hours",
+                      "hour",
+                      "30 minutes",
+                      "5 minutes",
+                      "minute",
+                      "30 seconds",
+                      "5 seconds",
+                      "second"
+                    ],
+                    "type": "string"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "latestOnly": {
+                    "type": "boolean"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "next": {},
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "tags": {},
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "start",
+                  "end"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "Query",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "aggregates": {
+                      "items": {
+                        "properties": {
+                          "aggregates": {},
+                          "deviceId": {
+                            "format": "uuid",
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          "type": {
+                            "enum": [
+                              "bitset",
+                              "localization",
+                              "point cloud",
+                              "location",
+                              "file",
+                              "health",
+                              "transform tree",
+                              "battery",
+                              "video",
+                              "numeric set",
+                              "json",
+                              "image",
+                              "numeric",
+                              "text"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "deviceId",
+                          "tags",
+                          "type",
+                          "aggregates"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "items": {
+                      "items": {
+                        "properties": {
+                          "deviceId": {
+                            "format": "uuid",
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "points": {
+                            "items": {
+                              "properties": {
+                                "0": {},
+                                "1": {}
+                              },
+                              "required": [
+                                "0",
+                                "1"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "tags": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          "type": {
+                            "enum": [
+                              "bitset",
+                              "localization",
+                              "point cloud",
+                              "location",
+                              "file",
+                              "health",
+                              "transform tree",
+                              "battery",
+                              "video",
+                              "numeric set",
+                              "json",
+                              "image",
+                              "numeric",
+                              "text"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "deviceId",
+                          "tags",
+                          "type",
+                          "points"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "next": {}
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query",
+        "tags": [
+          "Query"
+        ]
+      }
+    },
+    "/queries/export-sheet": {
+      "post": {
+        "description": "Resource: integrations\nAuthorized roles: operator",
+        "operationId": "QueryController.exportSheet",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "query": {
+                    "properties": {
+                      "agentIds": {
+                        "items": {
+                          "format": "uuid",
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "aggregate": {
+                        "enum": [
+                          "year",
+                          "month",
+                          "week",
+                          "day",
+                          "12 hours",
+                          "4 hours",
+                          "hour",
+                          "30 minutes",
+                          "5 minutes",
+                          "minute",
+                          "30 seconds",
+                          "5 seconds",
+                          "second"
+                        ],
+                        "type": "string"
+                      },
+                      "deviceIds": {
+                        "items": {
+                          "format": "uuid",
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "end": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "latestOnly": {
+                        "type": "boolean"
+                      },
+                      "names": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "next": {},
+                      "notNames": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "start": {
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "tags": {},
+                      "types": {
+                        "items": {
+                          "enum": [
+                            "bitset",
+                            "localization",
+                            "point cloud",
+                            "location",
+                            "file",
+                            "health",
+                            "transform tree",
+                            "battery",
+                            "video",
+                            "numeric set",
+                            "json",
+                            "image",
+                            "numeric",
+                            "text"
+                          ],
+                          "type": "string"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "required": [
+                      "start",
+                      "end"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "query"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "TelemetryExportSheetRequest",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "spreadsheetUrl": {
+                      "format": "url",
+                      "type": "string"
+                    },
+                    "telemetryNotFound": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "spreadsheetUrl",
+                    "telemetryNotFound"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Export sheet",
+        "tags": [
+          "Query"
+        ]
+      }
+    },
+    "/seek": {
+      "post": {
+        "description": "Resource: streams\nAuthorized roles: viewer",
+        "operationId": "SeekController.seek",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "direction": {
+                    "enum": [
+                      "next",
+                      "previous"
+                    ],
+                    "type": "string"
+                  },
+                  "from": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tags": {},
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "direction",
+                  "from"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "SeekQuery",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "time": {
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Seek",
+        "tags": [
+          "Seek"
+        ]
+      }
+    },
+    "/stream-current-value": {
+      "post": {
+        "description": "Resource: streams\nAuthorized roles: viewer",
+        "operationId": "StreamCurrentValueController.query",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agentIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "deviceIds": {
+                    "items": {
+                      "format": "uuid",
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "names": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "notNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "tags": {},
+                  "types": {
+                    "items": {
+                      "enum": [
+                        "bitset",
+                        "localization",
+                        "point cloud",
+                        "location",
+                        "file",
+                        "health",
+                        "transform tree",
+                        "battery",
+                        "video",
+                        "numeric set",
+                        "json",
+                        "image",
+                        "numeric",
+                        "text"
+                      ],
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "description": "ScopeFilter",
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "properties": {
+                          "deviceId": {
+                            "format": "uuid",
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "additionalProperties": {
+                              "type": "string"
+                            },
+                            "type": "object"
+                          },
+                          "type": {
+                            "enum": [
+                              "bitset",
+                              "localization",
+                              "point cloud",
+                              "location",
+                              "file",
+                              "health",
+                              "transform tree",
+                              "battery",
+                              "video",
+                              "numeric set",
+                              "json",
+                              "image",
+                              "numeric",
+                              "text"
+                            ],
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "deviceId",
+                          "name",
+                          "type",
+                          "tags"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query",
+        "tags": [
+          "Stream Current Value"
+        ]
+      }
+    },
+    "/usage/{id}/query": {
+      "post": {
+        "description": "Resource: billing\nAuthorized roles: administrator",
+        "operationId": "UsageMetricsController.query",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "detailed": {
+                    "type": "boolean"
+                  },
+                  "end": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "metricType": {
+                    "enum": [
+                      "data-in-bytes",
+                      "data-in-count",
+                      "data-out-bytes",
+                      "data-out-cached-bytes",
+                      "data-out-count",
+                      "analytics-out-bytes",
+                      "analytics-out-count",
+                      "data-stored-bytes",
+                      "asset-in-bytes"
+                    ],
+                    "type": "string"
+                  },
+                  "start": {
+                    "format": "date-time",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "start",
+                  "end"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "description": "UsageMetricsQuery",
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "properties": {
+                          "createdAt": {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "deviceId": {
+                            "format": "uuid",
+                            "type": "string"
+                          },
+                          "id": {
+                            "format": "uuid",
+                            "type": "string"
+                          },
+                          "metricType": {
+                            "enum": [
+                              "data-in-bytes",
+                              "data-in-count",
+                              "data-out-bytes",
+                              "data-out-cached-bytes",
+                              "data-out-count",
+                              "analytics-out-bytes",
+                              "analytics-out-count",
+                              "data-stored-bytes",
+                              "asset-in-bytes"
+                            ],
+                            "type": "string"
+                          },
+                          "metricValue": {
+                            "format": "int64",
+                            "maximum": 9007199254740991,
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          "organizationId": {
+                            "format": "uuid",
+                            "type": "string"
+                          },
+                          "sourceId": {
+                            "type": "string"
+                          },
+                          "time": {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          "userId": {
+                            "format": "uuid",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "organizationId",
+                          "metricType",
+                          "time",
+                          "metricValue",
+                          "sourceId"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "items"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Query",
+        "tags": [
+          "Usage Metrics"
+        ]
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.formant.io/v1/queries"
+    }
+  ]
+}
