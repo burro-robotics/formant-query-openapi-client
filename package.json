@@ -1,5 +1,5 @@
 {
-  "name": "formant-openapi-client",
+  "name": "formant-query-openapi-client",
   "version": "1.124.5",
   "main": "packages/api-client-typescript-axios/dist/index.js",
   "workspaces": [
